@@ -1,4 +1,5 @@
 using LogisticAPI.DbContexts;
+using LogisticAPI.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,7 +30,7 @@ namespace LogisticAPI
         {
             services.AddDbContext<AppDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddControllers();
 
         }
