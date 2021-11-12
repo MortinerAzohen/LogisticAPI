@@ -34,11 +34,11 @@ namespace LogisticAPI.Repository
             var listOfCountryCodes = new List<string>();
             var countedCountries = _db.Countries.Count();
             var matrix = CreateMatrix(countedCountries);
-            var shortestPath = SearchingAlgorithms.DijkstraShortestPathAlgorithm(matrix, startingCountryId, destinationCountryID);
+            var shortestPath = SearchingAlgorithms.DijkstraShortestPathAlgorithm(matrix, startingCountryId - 1, destinationCountryID - 1);
 
             foreach(var countryID in shortestPath)
             {
-                var country = await _db.Countries.FirstOrDefaultAsync(c => c.Id == countryID);
+                var country = await _db.Countries.FirstOrDefaultAsync(c => c.Id == countryID + 1);
                 listOfCountryCodes.Add(country.CountryCode);
             }
 

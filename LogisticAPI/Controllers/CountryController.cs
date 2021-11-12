@@ -48,10 +48,22 @@ namespace LogisticAPI.Controllers
                 _response.ErrorMsg = $"Country with given code {countryCode} doesn't exist";
                 return _response;
             }
+            else if(destinationcountry.CountryCode == "USA")
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMsg = $"Starting country is same as destination country. Please choose other country than {destinationcountry}";
+                return _response;
+            }
             
             try
             {
-                var road = await _countryRepository.GetRoadFromUSA(1, destinationcountry.Id);
+
+                var road = new RoadDto()
+                {
+                    StartingCountryCode = "USA",
+                    DestinationCountryCode = destinationcountry.CountryCode,
+                    Road = await _countryRepository.GetRoadFromUSA(2, destinationcountry.Id)
+                };
                 _response.Result = road;
             }
             catch (Exception ex)
