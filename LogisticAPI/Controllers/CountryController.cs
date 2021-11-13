@@ -1,5 +1,6 @@
 ﻿using LogisticAPI.Dtos;
 using LogisticAPI.Repository;
+using LogisticAPI.Support;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,7 +22,7 @@ namespace LogisticAPI.Controllers
             _countryRepository = countryRepository;
         }
         [HttpGet]
-        [Route("api/countries")]
+        [Route("countries")]
         public async Task<ResponseDto> Get()
         {
             try
@@ -40,6 +41,7 @@ namespace LogisticAPI.Controllers
         [Route("{countryCode}")]
         public async Task<ResponseDto> GetShortestRoadFromUSA(string countryCode)
         {
+            var startingCountry = await _countryRepository.GetCountryByCode(Constants.USACountryCode);
             var destinationcountry = await _countryRepository.GetCountryByCode(countryCode);
             
             if(destinationcountry == null)
@@ -48,7 +50,7 @@ namespace LogisticAPI.Controllers
                 _response.ErrorMsg = $"Country with given code {countryCode} doesn't exist";
                 return _response;
             }
-            else if(destinationcountry.CountryCode == "USA")
+            else if(destinationcountry.CountryCode == Constants.USACountryCode)
             {
                 _response.IsSuccess = false;
                 _response.ErrorMsg = $"Starting country is same as destination country. Please choose other country than {destinationcountry}";
@@ -60,9 +62,9 @@ namespace LogisticAPI.Controllers
 
                 var road = new RoadDto()
                 {
-                    StartingCountryCode = "USA",
+                    StartingCountryCode = Constants.USACountryCode,
                     DestinationCountryCode = destinationcountry.CountryCode,
-                    Road = await _countryRepository.GetRoadFromUSA(2, destinationcountry.Id)
+                    Road = await _countryRepository.GetRoadFromUSA(startingCountry.Id, destinationcountry.Id)
                 };
                 _response.Result = road;
             }
