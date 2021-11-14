@@ -53,7 +53,7 @@ namespace LogisticAPI.Controllers
             else if(destinationcountry.CountryCode == Constants.USACountryCode)
             {
                 _response.IsSuccess = false;
-                _response.ErrorMsg = $"Starting country is same as destination country. Please choose other country than {destinationcountry}";
+                _response.ErrorMsg = $"Starting country is same as destination country. Please choose other country than {destinationcountry.CountryCode }";
                 return _response;
             }
             
