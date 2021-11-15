@@ -23,7 +23,7 @@ namespace LogisticAPI.Controllers
         }
 
         /// <summary>
-        /// API controller funtion  to get all countries from database
+        /// API controller function to get all countries from database
         /// </summary>
         /// <returns>ResponseDto with list of countries</returns>
         [HttpGet]
@@ -52,7 +52,6 @@ namespace LogisticAPI.Controllers
         public async Task<ResponseDto> GetShortestRoadFromUSA(string countryCode)
         {
             // getting countries by CountryCodes. For USA I used constant value as it is easier to not make spelling mistake.
-            // It's easier to change Use country code if there will be need for it.
             var startingCountry = await _countryRepository.GetCountryByCode(Constants.USACountryCode);
             var destinationcountry = await _countryRepository.GetCountryByCode(countryCode);
             
@@ -74,7 +73,7 @@ namespace LogisticAPI.Controllers
 
             try
             {
-            // creating RoadDto with all data
+            // creating RoadDto with all data and sending it with ResponseDto
                 var road = new RoadDto()
                 {
                     StartingCountryCode = Constants.USACountryCode,

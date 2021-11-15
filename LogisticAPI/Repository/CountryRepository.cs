@@ -45,7 +45,7 @@ namespace LogisticAPI.Repository
         /// Function returns road from destination A to destiantion B. In this case it will be always from but 
         /// it will return any road between north america countries. I didn't hard coded 'USA' because
         /// in my opinion there is huge possibility that client will ask for roads starting from other countries than USA.
-        /// I used searching algorythm to find the best way. 
+        /// I used searching algorythm to find the best road. 
         /// </summary>
         /// <param name="startingCountryId"> starting country code</param>
         /// <param name="destinationCountryID"> destination country code</param>
@@ -58,7 +58,7 @@ namespace LogisticAPI.Repository
             var matrix = CreateMatrix(countedCountries);
 
             // Dijkstra algorythm needs matrix with cost values between nodes. I've found simplest implementation in the internet and 
-            // changes it a bit for puroposes of this recrutation task.
+            // changed it for puroposes of this recrutation task.
             var shortestPath = SearchingAlgorithms.DijkstraShortestPathAlgorithm(matrix, startingCountryId - 1, destinationCountryID - 1);
 
             foreach(var countryID in shortestPath)
@@ -71,9 +71,9 @@ namespace LogisticAPI.Repository
         }
 
         /// <summary>
-        /// This function creates matrix for algorythm. It only works for all countries as it takes all conections from database. 
-        /// If we create group of countries like south america and north america there should be added verification if connection 
-        /// is between countries from selected group. 
+        /// This function creates matrix for algorythm. It only works for all countries from database so countedCountries
+        /// always should be equal of _db.Countries.Count();
+        /// 
         /// </summary>
         /// <param name="countedCountries">amout of countries that we want to add to matrix</param>
         /// <returns></returns>
