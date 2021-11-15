@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQsMAXUQbSkivQlEa/XJ87gAAAAACAAAAAAAQZgAAAAEAACAAAAD4+ld8geRR8/zG8Vu7P89tZ/97oUkgq5snXWTDi3KmcgAAAAAOgAAAAAIAACAAAAAFHYLI3eKqC120uwWvxfas9KCTv+6fNlCB25drubLjsIAAAACBflM81Rt7pIDAmHaQTF8ATi0dIGdOi86aXSRS/BpJRe7bcJAOTYonJUqr8pUNrN2V7DByqt9IEiRhFwgCjAQ0HNwI/TeQKifolT0GA86YppMh9Z9ZJ5oE2BTPvbFTL2EHJ0gpiNTNUw8FIvLuixV1mfxPRNWBJsRjwgWxFaMJlUAAAAA/OY4jQp25Wbk1ctSwtoSdxpWRmUWwqT+JLPxTjcplw8pomOrPN5KNii8KWXlAmgdedztfxF2C4Cno97Rx8Dp4</EncryptedPassword>
+    <History>True|2021-11-15T19:40:20.6936698Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="LogisticAPI.DbContexts.AppDbContext">
+      <Value>Data Source=tcp:logisticapidbserver.database.windows.net,1433%3bInitial Catalog=LogisticAPI_db%3bUser Id=Mortiner%40logisticapidbserver%3bPassword=Testowanie1!</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
