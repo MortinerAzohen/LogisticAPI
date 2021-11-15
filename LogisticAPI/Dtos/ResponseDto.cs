@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace LogisticAPI.Dtos
 {
+    /// <summary>
+    /// Universal response for all potential end points
+    /// </summary>
     public class ResponseDto
     {
         public bool IsSuccess { get; set; } = true;
